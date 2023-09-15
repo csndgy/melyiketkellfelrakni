@@ -30,7 +30,7 @@ namespace operatorokokokokokokkok
         public MainWindow()
         {
             InitializeComponent();
-            
+
 
         }
         private void btnKiir_Click(object sender, RoutedEventArgs e)
@@ -44,7 +44,7 @@ namespace operatorokokokokokokkok
                 lblTextMasodik.Content = "Kifejezések maradékos osztásssal: " + feladatok.Count(x => x.Operat == "mod");
                 Negyes();
                 Otos();
-                Hatos();
+                //Muvelet();
             }
             else
             {
@@ -52,7 +52,7 @@ namespace operatorokokokokokokkok
             }
         }
 
-        
+
 
         public void FileBeolvasas(string fajlNev)
         {
@@ -67,7 +67,7 @@ namespace operatorokokokokokokkok
         }
         public void Negyes()
         {
-            if (feladatok.Any(x => x.Operat == "div") )
+            if (feladatok.Any(x => x.Operat == "div"))
             {
                 lblTextHarmadik.Content = "Van ilyen kifejezés!";
             }
@@ -85,13 +85,68 @@ namespace operatorokokokokokokkok
             int min = feladatok.Count(x => x.Operat == "-");
             int csill = feladatok.Count(x => x.Operat == "*");
             int plus = feladatok.Count(x => x.Operat == "+");
-            lblTextNegyedik.Content = "Statisztika" + "\n" + "mod -> " + 
-                mod  + " db\n/ -> " + per +" db\ndiv -> " + div
-                +" db\n- -> "+ min + " db\n* -> " +csill + " db\n+ -> " + plus;
+            lblTextNegyedik.Content = "Statisztika" + "\n" + "mod -> " +
+                mod + " db\n/ -> " + per + " db\ndiv -> " + div
+                + " db\n- -> " + min + " db\n* -> " + csill + " db\n+ -> " + plus;
         }
 
-        public void Hatos()
+        public string Muvelet(int operandusA, int operandusB, string muveletiJel)
         {
+            double eredmeny = 0;
+            try
+            {
+                switch (muveletiJel)
+                {
+                    case "mod":
+                        eredmeny = operandusA % operandusB;
+                        break;
+                    case "/":
+                        //if (operandusB==0)
+                        //{
+                        //    return "HIBA! :0-val nem lhet osztani!";
+                        //}
+                        eredmeny = operandusA / operandusB;
+                        break;
+                    case "div":
+                        eredmeny = (double)operandusA / operandusB;
+                        break;
+                    case "-":
+                        eredmeny = operandusA - operandusB;
+                        break;
+                    case "*":
+                        eredmeny = operandusA * operandusB;
+                        break;
+                    case "+":
+                        eredmeny = operandusA + operandusB;
+                        break;
+                    default:
+                        return "Hibás operátor!";
+                }
+            }
+            catch (DivideByZeroException hiba)
+            {
+                return "Hiba: 0-val nem lehet osztani!";
+            }
+            catch (OverflowException hiba)
+            {
+                return "Hiba: Túlcsordulás!";
+            }
+            return Convert.ToString(eredmeny);
+        }
+
+        public void Hetes()
+        {
+            string adatBekeres = Console.ReadLine();
+            do
+            {
+
+            } while (adatBekeres != "vége");
+        }
+
+        private void btnErtekel_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show(Muvelet(int.Parse(txtOpA.Text), int.Parse(txtOpB.Text), txtMuv.Text));
 
         }
     }

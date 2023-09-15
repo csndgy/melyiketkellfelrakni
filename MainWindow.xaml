@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:operatorokokokokokokkok"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="LightBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
@@ -21,6 +22,12 @@
         <Label x:Name="lblTextMasodik" Content="2" Grid.Column="1" Grid.Row="1" ></Label>
         <Label x:Name="lblTextHarmadik" Content="3" Grid.Column="1" Grid.Row="1" Height="145" Margin="0,144,0,0" Grid.RowSpan="2" VerticalAlignment="Top" ></Label>
         <Label x:Name="lblTextNegyedik" Content="4" Grid.Column="0" Grid.Row="1" ></Label>
-        <Label x:Name="lblTextOtodik" Content="pluto" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" FontFamily="Informal Roman" FontSize="36" ></Label>
+        <Label x:Name="lblTextOtodik" Content="" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" FontFamily="Informal Roman" FontSize="36" ></Label>
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBox x:Name="txtOpA" Width="60" FontSize="20" Background="Yellow"/>
+            <TextBox x:Name="txtOpB" Width="60" FontSize="20" Background="Yellow"/>
+            <TextBox x:Name="txtMuv" Width="60" FontSize="20" Background="Yellow"/>
+            <Button x:Name="btnErtekel" Width="120" Content="Értékel" Click="btnErtekel_Click"/>
+        </StackPanel>
     </Grid>
 </Window> 
